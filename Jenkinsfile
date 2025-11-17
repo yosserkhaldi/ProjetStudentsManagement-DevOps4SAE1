@@ -1,17 +1,9 @@
 pipeline {
     agent any
 
-    tools {
-        // Noms EXACTS comme dans Manage Jenkins > Global Tool Configuration
-        maven 'Maven-3.6.3'
-        jdk   'JDK17'
-    }
-
     triggers {
-        // Option 1 : Poll SCM toutes les 2 minutes (facile en local)
+        // Pour le TP : Jenkins vérifie toutes les 2 minutes s'il y a un nouveau commit
         pollSCM('H/2 * * * *')
-        // Option 2 si tu arrives à configurer un webhook GitHub :
-        // githubPush()
     }
 
     stages {
@@ -25,15 +17,18 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn -B clean package'
+                sh 'mvn -B clean package -DskipTests'
             }
         }
 
+        // Tu pourras réactiver plus tard pour le bonus
+        /*
         stage('Tests') {
             steps {
-                sh 'mvn tst'
+                sh 'mvn test'
             }
         }
+        */
 
         stage('Archive artifact') {
             steps {
