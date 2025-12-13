@@ -16,8 +16,8 @@ metadata:
   name: spring-secret
 type: Opaque
 data:
-  SPRING_DATASOURCE_USERNAME: cm9vdA==     # root
-  SPRING_DATASOURCE_PASSWORD: ""           # vide → attention !
+  SPRING_DATASOURCE_USERNAME: cm9vdA==
+  SPRING_DATASOURCE_PASSWORD: cm9vdA==
 
 ---
 apiVersion: apps/v1
